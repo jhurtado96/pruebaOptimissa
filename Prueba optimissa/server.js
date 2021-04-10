@@ -43,8 +43,8 @@ let clientFour = new Client ("3","manuel","manuel@gmail.com","engineer");
 
 
 
-let policieOne = new Policie ("0","3000","po@gmail.com","14/04/1006","3000",clienteTwo);
-let policieTwo = new Policie ("1","3000","pt@gmail.com","17/02/1206","3000",clientOne);
+let policieOne = new Policie ("0","3000","po@gmail.com","14/04/1006","3000",clienteOne);
+let policieTwo = new Policie ("1","3000","pt@gmail.com","17/02/1206","3000",clienteTwo);
 let policieThree = new Policie ("2","3000","pth@gmail.com","17/04/1406","3000",clientThree);
 let policieFour = new Policie ("3","3000","pf@gmail.com","01/01/2006","3000",clientFour);
 
@@ -91,7 +91,7 @@ app.get('/', function (req,res){
 // En este end point realizamos el login en el cual hardcodeamos un user y un psw, con el modulo de jwt generamos un token y lo devolvemos al usuario 
 
 app.post('/login', (req, res) => {
-    if(req.body.usuario === "dare" && req.body.contrasena === "s3cr3t") {
+    if(req.body.client_ID === "dare" && req.body.client_secret === "s3cr3t") {
 		const payload = {
 			check:  true
 		};
