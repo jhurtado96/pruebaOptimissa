@@ -37,14 +37,14 @@ class Policie {
 //Creo 4 objetos de la clase cliente y politica donde  Id será la posición del array en el que estará ubicado
 
 let clientOne = new Client ("0","Pablo","pablo@gmail.com","Analista");
-let clienteTwo = new Client ("1","luis","luis@gmail.com","dev");
+let clientTwo = new Client ("1","luis","luis@gmail.com","dev");
 let clientThree = new Client ("2","jaime","jaime@gmail.com","manager");
 let clientFour = new Client ("3","manuel","manuel@gmail.com","engineer");
 
 
 
-let policieOne = new Policie ("0","3000","po@gmail.com","14/04/1006","3000",clienteOne);
-let policieTwo = new Policie ("1","3000","pt@gmail.com","17/02/1206","3000",clienteTwo);
+let policieOne = new Policie ("0","3000","po@gmail.com","14/04/1006","3000",clientOne);
+let policieTwo = new Policie ("1","3000","pt@gmail.com","17/02/1206","3000",clientTwo);
 let policieThree = new Policie ("2","3000","pth@gmail.com","17/04/1406","3000",clientThree);
 let policieFour = new Policie ("3","3000","pf@gmail.com","01/01/2006","3000",clientFour);
 
@@ -55,7 +55,7 @@ let policieFour = new Policie ("3","3000","pf@gmail.com","01/01/2006","3000",cli
 let arrPolicies=[policieOne,policieTwo,policieThree,policieFour]
 
 
-let arrClients = [clientOne,clienteTwo,clientThree,clientFour]
+let arrClients = [clientOne,clientTwo,clientThree,clientFour]
 
 //Utilizo modulo express para el api rest y el jwt para generar el token de autenticacion
 
@@ -83,7 +83,7 @@ app.set('llave', config.llave);
 app.listen(3001,()=>{
     console.log('Servidor iniciado en el puerto 3001') 
 });
-// Ahora vienen los end point
+// Ahora vienen los end point. Prueba unitaria para ver si estoy conectado al servidor
 app.get('/', function (req,res){
     res.send('Hello from server')
 });
@@ -99,12 +99,13 @@ app.post('/login', (req, res) => {
 			expiresIn: 1440
 		});
 		res.send({
+            code:200,
 			mensaje: 'Autenticación correcta',
 			token: token,
             expiresIn:1440
 		});
     } else {
-        res.send({ mensaje: "Usuario o contraseña incorrectos"})
+        res.send({code:401, mensaje: "Unauthorized error"})
     }
 })
 
@@ -116,16 +117,14 @@ rutasProtegidas.use((req, res, next) => {
     if (token) {
       jwt.verify(token, app.get('llave'), (err, decoded) => {      
         if (err) {
-          return res.json({ mensaje: 'Token inválido' });    
+          return res.send({code:401, mensaje: 'Unauthorized error' });    
         } else {
           req.decoded = decoded;    
           next();
         }
       });
     } else {
-      res.send({ 
-         codigo:401, mensaje: 'Token no recibido.' 
-      });
+      res.send({ codigo:403, mensaje: 'Forbidden error'});
     }
  });
 
