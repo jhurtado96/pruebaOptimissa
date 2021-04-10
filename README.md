@@ -24,7 +24,7 @@ El ejercicio contiene también una serie de capturaciones de errores:
 
 * GET /policies: Al intentar acceder a un id que no existe, si la lista de politicas se encuentra vacía, si no has accedido con token y si el token no es válido.
 
-* GET /policies/client: Al intentar acceder a un id que no existe, si no introduces ningún id válido o simplemente no lo escribes, si no has accedido con token y si el token no es válido.
+* GET /policies/client: Al intentar acceder a un id que no existe, si no escribes ningún id, si no has accedido con token y si el token no es válido.
 
 *TESTING*
 
