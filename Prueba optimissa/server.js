@@ -62,7 +62,6 @@ let arrClients = [clientOne,clientTwo,clientThree,clientFour]
 const jwt = require("jsonwebtoken");
 const express = require("express");
 
- 
 const app = express();
 
 app.use(express.urlencoded({extended:false}));
@@ -117,14 +116,14 @@ rutasProtegidas.use((req, res, next) => {
     if (token) {
       jwt.verify(token, app.get('llave'), (err, decoded) => {      
         if (err) {
-          return res.send({code:401, mensaje: 'Unauthorized error' });    
+            return res.send({code:401, mensaje: 'Unauthorized error' });       
         } else {
           req.decoded = decoded;    
           next();
         }
       });
     } else {
-      res.send({ codigo:403, mensaje: 'Forbidden error'});
+        res.send({ codigo:403, mensaje: 'Forbidden error'});
     }
  });
 
