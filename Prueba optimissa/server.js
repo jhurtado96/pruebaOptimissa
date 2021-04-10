@@ -61,7 +61,6 @@ let arrClients = [clientOne,clientTwo,clientThree,clientFour]
 
 const jwt = require("jsonwebtoken");
 const express = require("express");
-
 const app = express();
 
 app.use(express.urlencoded({extended:false}));
@@ -78,9 +77,9 @@ const config = {
 app.set('llave', config.llave);
 
 
-//Inicio el servidor en el puerto 3001
-app.listen(3001,()=>{
-    console.log('Servidor iniciado en el puerto 3001') 
+//Inicio el servidor en el puerto 3000
+app.listen(3000,()=>{
+    console.log('Servidor iniciado en el puerto 3000') 
 });
 // Ahora vienen los end point. Prueba unitaria para ver si estoy conectado al servidor
 app.get('/', function (req,res){
@@ -233,3 +232,5 @@ app.use(function(req, res, next){
     respuesta = {codigo: 404, mensaje: "URL no encontrado"}
     res.status(404).send(respuesta)
 })
+
+module.exports=app
