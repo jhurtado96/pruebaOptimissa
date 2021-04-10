@@ -28,4 +28,4 @@ El ejercicio contiene también una serie de capturaciones de errores:
 
 *TESTING*
 
-Para la fase de testing he utilizado el framework Mocha y el modulo Supertest, en la carpeta test he creado el fichero api.test.js donde importo el modulo app de server.js (donde se llama a las distintas api rest). Hago el testing de los cuatro endpoint con resultado positivo. Para ejecutar el testing se inicializa con elm comando npm test. En el fichero package.json agrego en el apartado scripts el test de mocha, introduzco la ruta con el sufijo --exit para que se acabe de ejecutar el servidor cuando finalice el testeo.
+Para la fase de testing he utilizado el framework Mocha y el modulo Supertest, en la carpeta test he creado el fichero api.test.js donde importo el modulo app de server.js (donde se llama a las distintas api rest). Hago el testing de los cuatro endpoint con resultado positivo. Para ejecutar el testing se inicializa con el comando npm test. En el fichero package.json agrego en el apartado scripts el test de mocha, introduzco la ruta con el sufijo --exit para que se acabe de ejecutar el servidor cuando finalice el testeo.
