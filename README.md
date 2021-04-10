@@ -1,4 +1,4 @@
-# Api Resto con identificación con token.
+# Api Rest, identificación con token.
 
 Para realizar esta prueba primeramente he creado una clase policie y otra client son sus respectivos atributos. 
 Como segundo paso accedemos al servidor mediante el modulo express.
