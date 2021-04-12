@@ -12,7 +12,7 @@ Ahora ya podremos acceder a todos los End Point del ejercicio sin problemas.
 El ejercicio pide seis endpoints sin embargo he conseguido ahorrar codigo utilizando cuatro sin obviar ninguna funcionalidad, mediante un concidional compruebo si el endpoint del get (tanto client como policies) contienen un id en la query, en caso negativo mostrará el listado completo de clients y policies, por otra parte si la query contiene 
 un id mostrará sólo el elemento con ese id.
 
-*CAPTURACION DE ERRORES*
+*CAPTURA DE ERRORES*
 
 El ejercicio contiene también una serie de capturaciones de errores:
 
