@@ -78,7 +78,7 @@ app.set('llave', config.llave);
 app.listen(3000, () => {
     console.log('Servidor iniciado en el puerto 3000')
 });
-// Ahora vienen los end point. Prueba unitaria para ver si estoy conectado al servidor
+//Prueba unitaria para saber si estoy conectado al servidor
 app.get('/', function (req, res) {
     res.send('Hello from server')
 });
@@ -110,7 +110,7 @@ app.post('/login', (req, res) => {
     }
 })
 
-//En este punto verificamos si el token recibido es válido o no dando feedback al usuario
+//En este middleware verificamos si el token recibido es válido o no dando feedback al usuario, lo utilizaremos en todos los endpoint.
 const rutasProtegidas = express.Router();
 
 rutasProtegidas.use((req, res, next) => {
@@ -152,14 +152,14 @@ app.get("/clients", rutasProtegidas,
 
         if (arrClients == null) {
 
-            respuesta = { error: false, codigo: 201, mensaje: 'No hay clientes' }
+            respuesta = { error: false, codigo: 405, mensaje: 'No hay clientes' }
 
         }
 
         if (id) {
-            if (arrClients.length < id) {
+            if (arrClients.length <= id) {
 
-                respuesta = { error: false, codigo: 201, mensaje: 'No hay clientes con ese id' }
+                respuesta = { error: false, codigo: 406, mensaje: 'No hay clientes con ese id' }
 
             } else {
 
@@ -198,7 +198,7 @@ app.get("/policies",
 
 
         if (id) {
-            if (arrPolicies.length < id) {
+            if (arrPolicies.length <= id) {
 
                 respuesta = { error: false, codigo: 406, mensaje: 'No hay politicas con ese id' }
 
@@ -230,7 +230,7 @@ app.get("/policies/client",
         let id = req.query.id
 
         if (id) {
-            if (arrPolicies.length < id) {
+            if (arrPolicies.length <= id) {
 
                 respuesta = { error: false, codigo: 406, mensaje: 'No existe el ID' }
 
